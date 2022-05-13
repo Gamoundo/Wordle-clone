@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import './App.css';
+import Clonal from "./components/Clonal";
 
 function App() {
 
@@ -9,8 +10,8 @@ useEffect(() => {
   .then(res => res.json())
   .then(json => {
     const random = json[Math.floor(Math.random()*json.length)]
-    console.log(random)
-    setSolution(random)
+    console.log(solution)
+    setSolution(random.word)
   })
 }, [setSolution])
 
@@ -18,7 +19,7 @@ useEffect(() => {
   return (
     <div className="App">
       <h1> Clonal</h1>
-      {solution && <div> The Answer is {solution.word} </div>}
+      {solution && <Clonal solution={solution} />}
     </div>
   );
 }

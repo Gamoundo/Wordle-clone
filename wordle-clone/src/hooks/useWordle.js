@@ -20,11 +20,18 @@ const addGuess = () => {
 
 }
 
-const key = () => {
+const handleKeyUp = ({key}) => {
+if (/^[A-Za-z]$/.test(key)) {
+    if(currentGuess.length < 5) {
+        setCurrentGuess((prev) => {
+            return prev + key
+        })
+    }
+}
 
 }
 
-return {turn, currentGuess, guesses, correct, key}
+return {turn, currentGuess, guesses, correct, handleKeyUp}
 
 }
 
