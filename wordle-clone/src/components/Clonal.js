@@ -12,6 +12,10 @@ export default function Clonal( { solution }) {
     }, [handleKeyUp])
     
   return (
-    <div>Your Current guess: {currentGuess}</div>
+    <div>
+        <div> word you are trying to guess: {solution}</div>
+        <div>Your Current guess: {currentGuess}</div>
+    </div>
+    
   )
 }

@@ -13,7 +13,28 @@ const [correct, setCorrect] = useState(false)
 
 
 const formatGuess = () => {
-console.log("formatting the guess", currentGuess)
+
+let solutionArray = [...solution]
+let formattedGuess = [...currentGuess].map((l) => {
+    return {key: l, color: 'gray'}
+})
+
+formattedGuess.forEach((l, index) => {
+    if(solutionArray[index] === l.key) {
+        formattedGuess[index].color = 'green'
+        solutionArray[index] = null
+    }
+})
+
+formattedGuess.forEach((l, index) => {
+    if(solutionArray.includes(l.key) && l.color !== 'green') {
+        formattedGuess[index].color = 'yellow'
+        solutionArray[index]= null
+    }
+
+    
+})
+return formattedGuess
 }
 
 const addGuess = () => {
@@ -22,7 +43,7 @@ const addGuess = () => {
 
 const handleKeyUp = ({key}) => {
 if (key === 'Enter') {
-    
+    //check against master list to make sure it's a word?
     if (turn > 5) {
         console.log("Guess time is over")
         return
@@ -38,7 +59,9 @@ if (key === 'Enter') {
         return
     }
 
-    formatGuess()
+  let formatted= formatGuess()
+
+  console.log(formatted)
 }
 
 

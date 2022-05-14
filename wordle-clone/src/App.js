@@ -10,7 +10,7 @@ useEffect(() => {
   .then(res => res.json())
   .then(json => {
     const random = json[Math.floor(Math.random()*json.length)]
-    console.log(solution)
+    
     setSolution(random.word)
   })
 }, [setSolution])
