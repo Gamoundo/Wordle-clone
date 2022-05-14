@@ -34,11 +34,14 @@ formattedGuess.forEach((l, index) => {
 
     
 })
+setTurn(turn + 1)
 return formattedGuess
 }
 
 const addGuess = () => {
-
+   if(currentGuess === solution){
+       setCorrect(true)
+   }
 }
 
 const handleKeyUp = ({key}) => {
