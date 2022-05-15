@@ -62,6 +62,10 @@ text-transform: uppercase;
   animation-delay: 0.8s;
 }
 
+.row > div.filled {
+  animation: bounce 0.2s ease-in-out forwards;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -94,5 +98,21 @@ text-transform: uppercase;
     background: var(--background);
     background-color: var(--border-color);
     color: antiquewhite;
+  }
+}
+
+@keyframes bounce {
+  0%{
+    transform: scale(1);
+    border-color: beige;
+  }
+  50%{
+    transform: scale(1.2);
+    border-color: beige;
+
+  }
+  100% {
+    transform: scale(1);
+    border-color: #282c34;
   }
 }

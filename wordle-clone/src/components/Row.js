@@ -16,7 +16,7 @@ export default function Row({guess, currentGuess}) {
         let letters=currentGuess.split('')
         return(
             <div className='row'>
-                {letters.map((l,i) => {return <div key={i} className={l.color}> {l}</div> })}
+                {letters.map((l,i) => {return <div key={i} className='filled'> {l}</div> })}
                 {[...Array(5 - letters.length)].map((v,i) => {
                     return <div key={i}></div>
                 }
