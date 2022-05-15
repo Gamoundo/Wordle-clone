@@ -4,7 +4,7 @@ const wordle = (solution) => {
 
 const [turn, setTurn] = useState(0)
 const [currentGuess, setCurrentGuess] = useState('')
-const [guesses, setGuesses] = useState([])
+const [guesses, setGuesses] = useState([...Array(6)])
 const [history, setHistory] = useState([])
 const [correct, setCorrect] = useState(false)
 
@@ -34,14 +34,25 @@ formattedGuess.forEach((l, index) => {
 
     
 })
-setTurn(turn + 1)
+
 return formattedGuess
 }
 
-const addGuess = () => {
+const addGuess = (formattedGuess) => {
    if(currentGuess === solution){
        setCorrect(true)
+       
    }
+   setGuesses((prev) => {
+    let guessList = [...prev]
+    guessList[turn] = formattedGuess
+    return guessList
+})
+setHistory((prevHist) => {
+    return [...prevHist, currentGuess]
+})
+setTurn(turn + 1)
+setCurrentGuess('')
 }
 
 const handleKeyUp = ({key}) => {
@@ -63,8 +74,9 @@ if (key === 'Enter') {
     }
 
   let formatted= formatGuess()
-
-  console.log(formatted)
+  console.log(formatted)  
+  addGuess(formatted)
+  
 }
 
 
