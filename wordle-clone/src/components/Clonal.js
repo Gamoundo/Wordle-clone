@@ -22,7 +22,7 @@ export default function Clonal( { solution }) {
       
         <div> number of turns: {turn}</div>
         <div> word you are trying to guess: {solution}</div>
-        <div>Your Current guess: {currentGuess}</div>
+        
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}/>
     </div>
     
