@@ -42,6 +42,7 @@ const addGuess = (formattedGuess) => {
    if(currentGuess === solution){
        setCorrect(true)
        
+
    }
    setGuesses((prev) => {
     let guessList = [...prev]
