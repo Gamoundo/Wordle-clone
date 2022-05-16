@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import useWordle from '../hooks/useWordle'
 import Grid from './Grid'
+import Modal from './Modal'
 
 export default function Clonal( { solution }) {
 
     const {currentGuess, turn, guesses, correct, lett, handleKeyUp}=useWordle(solution)
 
+    const [showModal, setShowModal] = useState(false)
     useEffect(() => {
       window.addEventListener('keyup', handleKeyUp)
     
       if(correct) {
         console.log('winner')
         window.removeEventListener('keyup', handleKeyUp)
+        setTimeout(() => {
+          setShowModal(true) 
+        }, 2000);
+        
       }
 
       if(turn > 5){
         console.log("Guess time is over")
         window.removeEventListener('keyup', handleKeyUp)
+        setTimeout(() => {
+          setShowModal(true) 
+        }, 2000)
       }
 
 
@@ -69,7 +78,7 @@ export default function Clonal( { solution }) {
       return  <div key={l.key} className={color}>{l.key}</div>
       })}
       </div>
-      
+      {showModal && <Modal  turn={turn} correct={correct} solution={solution}/>}
     </div>
     
   )
