@@ -4,7 +4,7 @@ import Grid from './Grid'
 
 export default function Clonal( { solution }) {
 
-    const {currentGuess, turn, guesses, correct, handleKeyUp}=useWordle(solution)
+    const {currentGuess, turn, guesses, correct, lett, handleKeyUp}=useWordle(solution)
 
     useEffect(() => {
       window.addEventListener('keyup', handleKeyUp)
@@ -56,7 +56,8 @@ export default function Clonal( { solution }) {
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}/>
       <div className='keypad'>
       {letters.map((l) => {
-      return  <div key={l.key}>{l.key}</div>
+        const color = lett[l.key]
+      return  <div key={l.key} className={color}>{l.key}</div>
       })}
       </div>
       

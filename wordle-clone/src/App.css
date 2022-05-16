@@ -53,6 +53,21 @@ text-transform: uppercase;
   animation: flip 0.5s ease forwards;
 }
 
+.keypad >div.yellow {
+  background: yellow;
+  border-color: yellow;
+}
+
+.keypad >div.green {
+  background: green;
+  border-color: green;
+}
+
+.keypad >div.gray {
+  background: rgb(53, 49, 49);
+  border-color: rgb(53, 48, 48);
+}
+
 .row > div:nth-child(2){
   animation-delay: 0.2s;
 }

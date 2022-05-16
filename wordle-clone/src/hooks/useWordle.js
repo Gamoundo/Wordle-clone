@@ -7,6 +7,39 @@ const [currentGuess, setCurrentGuess] = useState('')
 const [guesses, setGuesses] = useState([...Array(6)])
 const [history, setHistory] = useState([])
 const [correct, setCorrect] = useState(false)
+const [lett, setLett] =useState(
+    {
+        q: '',
+        w: '',
+        e: '',
+        r: '',
+        t: '',
+        y: '',
+        u: '',
+        i: '',
+        o: '',
+        p: "",
+        a:'',
+        s:'',
+        d:'',
+        f:'',
+        g:'',
+        h:'',
+        j:'',
+        k:'',
+        l:'',
+        z:'',
+        x:'',
+        c:'',
+        v:'',
+        b:'',
+        n:'',
+        m:''
+
+    }
+      
+    
+  )
 
 
 
@@ -29,7 +62,7 @@ formattedGuess.forEach((l, index) => {
 formattedGuess.forEach((l, index) => {
     if(solutionArray.includes(l.key) && l.color !== 'green') {
         formattedGuess[index].color = 'yellow'
-        solutionArray[index]= null
+        solutionArray[solutionArray.indexOf(l.key)]= null
     }
 
     
@@ -53,6 +86,30 @@ setHistory((prevHist) => {
     return [...prevHist, currentGuess]
 })
 setTurn(turn + 1)
+setLett((prevLetters) => {
+  let newL={...prevLetters}
+  formattedGuess.forEach((l) => {
+      const curColor = newL[l.key]
+
+      if(l.color === 'green') {
+          newL[l.key] = 'green'
+          return
+      }
+      if(l.color === 'yellow' && curColor !== 'green') {
+          newL[l.key] = 'yellow'
+          return
+      }
+
+      if(l.color === 'gray' && curColor !== 'green' && curColor !== 'yellow') {
+          newL[l.key] = 'gray'
+          return
+      }
+
+      
+
+  })
+  return newL
+})
 setCurrentGuess('')
 }
 
@@ -97,7 +154,7 @@ if (/^[A-Za-z]$/.test(key)) {
 
 }
 
-return {turn, currentGuess, guesses, correct, handleKeyUp}
+return {turn, currentGuess, guesses, correct, lett, handleKeyUp}
 
 }
 
