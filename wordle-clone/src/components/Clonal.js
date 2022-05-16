@@ -9,12 +9,21 @@ export default function Clonal( { solution }) {
     useEffect(() => {
       window.addEventListener('keyup', handleKeyUp)
     
+      if(correct) {
+        console.log('winner')
+        window.removeEventListener('keyup', handleKeyUp)
+      }
+
+      if(turn > 5){
+        console.log("Guess time is over")
+        window.removeEventListener('keyup', handleKeyUp)
+      }
+
+
       return () => window.removeEventListener('keyup', handleKeyUp)
-    }, [handleKeyUp])
+    }, [handleKeyUp, turn, correct])
     
-    useEffect( () => {
-        console.log(guesses, correct)
-    }, [guesses, correct])
+    
 
     const [letters, setLetters] =useState(
       [
