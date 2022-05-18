@@ -69,7 +69,7 @@ export default function Clonal( { solution }) {
     <div>
       
         <div> number of turns: {turn}</div>
-        <div> word you are trying to guess: {solution}</div>
+        
         
         <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}/>
       <div className='keypad'>
